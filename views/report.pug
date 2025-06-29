@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1 Attendance Report
+  table
+    thead
+      tr
+        th Name
+        th Card ID
+        th Status
+    tbody
+      each user in users
+        tr
+          td= user.name
+          td= user.cardId
+          td= user.present ? 'Present' : 'Absent'
+  a(href="/export") Export to Excel

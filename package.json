@@ -1,0 +1,27 @@
+{
+  "name": "its_scan_app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hajiwalakutbuddin/its_scan_app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hajiwalakutbuddin/its_scan_app/issues"
+  },
+  "homepage": "https://github.com/hajiwalakutbuddin/its_scan_app#readme",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "dotenv": "^17.0.0",
+    "exceljs": "^4.4.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.16.1",
+    "pug": "^3.0.3"
+  }
+}

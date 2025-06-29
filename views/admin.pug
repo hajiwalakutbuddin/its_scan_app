@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1 Admin Attendance Report
+  table
+    thead
+      tr
+        th Name
+        th Card ID
+        th Time
+    tbody
+      each record in records
+        tr
+          td= record.user.name
+          td= record.user.cardId
+          td= record.timestamp.toLocaleString()
+  a(href="/export") Export to Excel

@@ -1,0 +1,13 @@
+body {
+  font-family: sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+input, button {
+  padding: 10px;
+  font-size: 16px;
+}
+#feedback {
+  margin-top: 10px;
+  color: green;
+}
