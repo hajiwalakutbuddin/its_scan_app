@@ -203,6 +203,8 @@ tr:hover {
   color: white;
   transition: background-color 0.3s;
   text-decoration: none;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .button-export {
@@ -214,11 +216,11 @@ tr:hover {
 }
 
 .button-report {
-  background-color: #17a2b8;
+  background-color: #28a745;
 }
 
 .button-report:hover {
-  background-color: #117a8b;
+  background-color: #218838;
 }
 
 /* Footer - sleeker style */
@@ -256,4 +258,16 @@ input[type="date"]:focus {
 .status-absent {
   color: red;
   font-weight: bold;
+}
+.button-delete {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 4px 5px;
+  width: 80px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.button-delete:hover {
+  background-color: red;
 }
