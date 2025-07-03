@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h2 Add New User
+  form(action="/add-user", method="POST")
+    input(type="text", name="name", required)
+    input(type="text", name="cardId", required)
+    input(type="number", name="age")
+    select(name="gender")
+        option(value="") Select Gender
+        option(value="Male") Male
+        option(value="Female") Female
+        option(value="Other") Other
+    button(type="submit") Add User

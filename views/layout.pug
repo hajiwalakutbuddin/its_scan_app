@@ -1,8 +1,19 @@
 doctype html
 html
   head
-    title Attendance App
+    title Attendance Tracker
     link(rel="stylesheet", href="/css/style.css")
-    script(src="/js/script.js", defer)
   body
-    block content
+    .navbar
+      h2 ITS SCANNING
+      ul
+        li: a(href='/') Home
+        li: a(href='/admin') Admin
+        li: a(href='/all-users') All-users
+        li: a(href='/report') report
+
+    .container
+      block content
+
+    .footer
+      p ITS SCANNING SERVICES • © #{new Date().getFullYear()}

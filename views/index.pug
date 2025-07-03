@@ -1,9 +1,39 @@
 extends layout
 
 block content
-  h1 Scan Card for Attendance
-  form#scanForm(action="/scan", method="POST")
-    input(type="text", name="cardId", placeholder="Scan or enter Card ID", autofocus required)
+  h1 Scan Attendance
+
+  if message
+    p.message= message
+
+  form(action="/scan", method="POST", autocomplete="off", id="scanForm")
+    input(
+      type="text",
+      name="cardId",
+      placeholder="Enter 8-digit Card ID",
+      required,
+      maxlength="8",
+      pattern="\\d{8}",
+      oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+    )
+    
+    input(
+      type="date",
+      name="selectedDate",
+      required,
+      value=selectedDate
+    )
+
     button(type="submit") Submit
-  div#feedback
-  a(href="/report") View Report
+    script.
+      document.addEventListener('DOMContentLoaded', function() {
+        var cardInput = document.getElementById('cardInput');
+        var scanForm = document.getElementById('scanForm');
+        if(cardInput && scanForm) {
+          cardInput.addEventListener('input', function() {
+            if(cardInput.value.length >= 8) { // or whatever length your card IDs are
+              scanForm.submit();
+            }
+          });
+        }
+      });

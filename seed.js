@@ -1,23 +1,12 @@
 const mongoose = require('mongoose');
 const User = require('./models/User');
-require('dotenv').config();
+const users = require('./users.json');
 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-const users = [
-  { name: 'Alice', cardId: 'A123' },
-  { name: 'Bob', cardId: 'B456' },
-  { name: 'Charlie', cardId: 'C789' },
-];
-
-async function seed() {
-  await User.deleteMany({});
-  await User.insertMany(users);
-  console.log('Database seeded');
-  mongoose.disconnect();
-}
-
-seed();
+mongoose.connect('mongodb://localhost:27017/attendance')
+  .then(async () => {
+    await User.deleteMany({});
+    await User.insertMany(users);
+    console.log('✅ Users inserted');
+    process.exit();
+  })
+  .catch(err => console.error('❌ Error inserting users:', err));

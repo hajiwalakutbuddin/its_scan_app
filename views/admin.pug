@@ -1,17 +1,60 @@
 extends layout
 
 block content
-  h1 Admin Attendance Report
-  table
-    thead
-      tr
-        th Name
-        th Card ID
-        th Time
-    tbody
-      each record in records
+  h2 Present Today
+  if presentUsers.length
+    table
+      thead
         tr
-          td= record.user.name
-          td= record.user.cardId
-          td= record.timestamp.toLocaleString()
-  a(href="/export") Export to Excel
+          th Name
+          th Card ID
+          th Age
+          th Gender
+          th Status
+      tbody
+        each user in presentUsers
+          tr
+            td= user.name
+            td= user.cardId
+            td= user.age || 'N/A'
+            td= user.gender || 'N/A'
+            td(class=`status-present`)= user.status
+  else
+    p No users marked present yet.
+
+  h2 Absent Today
+  if absentUsers.length
+    table
+      thead
+        tr
+          th Name
+          th Card ID
+          th Age
+          th Gender
+          th Status
+      tbody
+        each user in absentUsers
+          tr
+            td= user.name
+            td= user.cardId
+            td= user.age || 'N/A'
+            td= user.gender || 'N/A'
+            td(class=`status-absent`)= user.status
+            //- td
+            //-   form(action="/admin/delete-user", method="POST", style="display:inline")
+            //-     input(type="hidden", name="cardId", value=user.cardId)
+            //-     button(type="submit", class="button-delete") Delete
+  else
+    p Everyone is present 🎉
+
+
+  .button-group
+    form(method="GET", action="/admin", class="button-group")
+      input(type="date", name="date", required)
+      button(type="submit", class="button-report") View Report
+    br
+    form(method="GET", action="/report", class="button-group")
+      //- input(type="date", name="date", required)
+      button(type="submit", class="button-report") Download Report
+
+

@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h2 All Registered Users
+
+  if users.length
+    table
+      thead
+        tr
+          th Name
+          th Card ID
+          th Age
+          th Gender
+      tbody
+        each user in users
+          tr
+            td= user.name
+            td= user.cardId
+            td= user.age || 'N/A'
+            td= user.gender || 'N/A'
+            td
+              form(action="/admin/delete-user", method="POST", style="display:inline")
+                input(type="hidden", name="cardId", value=user.cardId)
+                button(type="submit", class="button-delete") Delete
+  else
+    p No users found.
+
+  form(method="GET", action="/export-all-users")
+    button(type="submit", class="button-report") Export All to Excel

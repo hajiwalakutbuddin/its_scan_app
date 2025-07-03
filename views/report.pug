@@ -7,11 +7,16 @@ block content
       tr
         th Name
         th Card ID
+        th Age
+        th Gender
         th Status
     tbody
       each user in users
         tr
           td= user.name
           td= user.cardId
+          td= user.age || 'N/A'
+          td= user.gender || 'N/A'
           td= user.present ? 'Present' : 'Absent'
-  a(href="/export") Export to Excel
+  .button-group
+    a(href="/export",class="button-export") Export to Excel
